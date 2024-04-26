@@ -16,3 +16,14 @@ jobs:
           git status
       - name: Run slow CI (emulated by a long sleep)
         run: sleep 300
+  show-workflow-files:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Display info
+        run: |
+          pwd
+          tree -a -I '.git'
+          git status
+          ls -l .github/workflows
