@@ -27,4 +27,5 @@ jobs:
           tree -a -I '.git'
           git status
           ls -l .github/workflows
+          exit 1
 
