@@ -61,7 +61,6 @@ jobs:
     needs:
       - changed_files
     runs-on: ubuntu-latest
-    if: needs.changed_files.outputs.helm_any_changed == true
     steps:
       - name: Echo
         run: |
@@ -71,3 +70,13 @@ jobs:
           echo "helm_all_changed_files: ${{ needs.changed_files.outputs.helm_all_changed_files }}"
           echo "build_any_changed: ${{ needs.changed_files.outputs.build_any_changed }}"
           echo "build_all_changed_files: ${{ needs.changed_files.outputs.build_all_changed_files }}"
+
+  conditional:
+    needs:
+      - changed_files
+    runs-on: ubuntu-latest
+    if: ${{ needs.changed_files.outputs.helm_any_changed == true }}
+    steps:
+      - name: Echo
+        run: |
+          echo "Helm files Updated"
