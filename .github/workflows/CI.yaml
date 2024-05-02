@@ -74,6 +74,7 @@ jobs:
           echo "build_all_changed_files: ${{ needs.changed_files.outputs.build_all_changed_files }}"
 
           echo ${{ needs.changed_files.outputs.helm_any_changed == 'true' }}
+          echo ${{ needs.changed_files.outputs.helm_any_changed == 'false' }}
 
   conditional:
     needs:
