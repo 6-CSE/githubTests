@@ -59,7 +59,7 @@ jobs:
 
   perform-echo:
     needs:
-      - changed-files
+      - changed_files
     runs-on: ubuntu-latest
     if: ${{ needs.changed-files.outputs.helm_any_changed == 'true' }}
     steps:
