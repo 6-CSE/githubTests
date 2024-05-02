@@ -82,3 +82,4 @@ jobs:
       - name: conditional-Echo
         run: |
           echo "Helm files Updated"
+          cat $GITHUB_OUTPUT
