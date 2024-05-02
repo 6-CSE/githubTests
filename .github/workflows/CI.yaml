@@ -20,6 +20,11 @@ jobs:
   changed_files:
     runs-on: ubuntu-latest  # windows-latest || macos-latest
     name: Test changed-files
+    outputs:
+      helm_any_changed: ${{ steps.changed-files-yaml.outputs.helm_any_changed }}
+      helm_all_changed_files: ${{ steps.changed-files-yaml.outputs.helm_all_changed_files }}
+      build_any_changed: ${{ steps.changed-files-yaml.outputs.build_any_changed }}
+      build_all_changed_files: ${{ steps.changed-files-yaml.outputs.build_all_changed_files }}
     steps:
       - uses: actions/checkout@v4
       - name: Get all test, doc and src files that have changed
@@ -50,3 +55,15 @@ jobs:
         run: |
           echo "One or more build file(s) has changed."
           echo "List all the files that have changed: $DOC_ALL_CHANGED_FILES"
+          
+
+  perform-echo:
+    needs:
+      - changed-files
+    runs-on: ubuntu-latest
+    if: ${{ needs.changed-files.outputs.helm_any_changed == 'true' }}
+    steps:
+      - name: Echo
+        run: |
+          echo "Helm files changed"
+            echo "List all the files that have changed: ${{ needs.changed-files.outputs.helm_all_changed_files }}"
