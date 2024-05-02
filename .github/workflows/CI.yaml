@@ -67,8 +67,10 @@ jobs:
           echo "Helm files changed"
           echo "all variables are:"
           echo "helm_any_changed: ${{ needs.changed_files.outputs.helm_any_changed }}"
+          echo ${{ needs.changed_files.outputs.helm_any_changed }}
           echo "helm_all_changed_files: ${{ needs.changed_files.outputs.helm_all_changed_files }}"
           echo "build_any_changed: ${{ needs.changed_files.outputs.build_any_changed }}"
+          echo ${{ needs.changed_files.outputs.build_any_changed }}
           echo "build_all_changed_files: ${{ needs.changed_files.outputs.build_all_changed_files }}"
 
   conditional:
