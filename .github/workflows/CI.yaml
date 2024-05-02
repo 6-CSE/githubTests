@@ -76,7 +76,7 @@ jobs:
           echo ${{ needs.changed_files.outputs.helm_any_changed == 'true' }}
           echo ${{ needs.changed_files.outputs.helm_any_changed == 'false' }}
 
-  conditional:
+  conditional-for-helm-change:
     needs:
       - changed_files
     runs-on: ubuntu-latest
