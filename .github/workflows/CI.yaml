@@ -77,7 +77,7 @@ jobs:
     needs:
       - changed_files
     runs-on: ubuntu-latest
-    if: needs.changed_files.outputs.helm_any_changed
+    if: ${{ needs.changed_files.outputs.helm_any_changed == true }}
     steps:
       - name: conditional-Echo
         run: |
